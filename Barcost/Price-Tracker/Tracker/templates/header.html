@@ -1,0 +1,67 @@
+{% load static %}
+
+{% block head %} 
+    <link rel = 'stylesheet' href = "{%static 'css/header.css' %}">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400&display=swap" rel="stylesheet">
+{% endblock head %}
+
+{% block body %}
+<div class = 'header'>
+    <div class='title'>
+        <a href="{% url 'landing' %}">
+            <img src="{% static 'images/logo.png' %}">
+            <span>BARCOST</span>
+        </a>
+    </div>
+    <div class = 'main'>
+        <ul>
+            <li><a href = "{% url 'landing' %}">HOME</a></li>
+            <li><a href = "{% url 'dashboard' %}">DASHBOARD</a></li>
+            <li><a href = "{% url 'about' %}">ABOUT US</a></li>
+        </ul>
+    </div>
+    <div class = 'status'>
+        {% if user.is_authenticated %}
+
+            <div class = 'profile-container' onclick="toggle_dropdown()">
+                <div class = 'username'>
+                    {{ user.first_name }}
+                </div>
+                <svg class = 'down-arrow' viewBox = '0 0 100 100' width = '15'>
+                    <line class = 'side'
+                        x1 = '0' x2 = '50' y1 = '20' y2 = '60'
+                        stroke-width = '20'
+                        stroke-linecap = 'round'>
+                    </line>
+                    <line class = 'side'
+                        x1 = '100' x2 = '50' y1 = '20' y2 = '60'
+                        stroke-width = '20'
+                        stroke-linecap = 'round'>
+                    </line>
+                </svg>
+                <div class = 'dropdown-menu' id = "dropdown-menu">
+                    <div class = 'dropdown-menu-option'>
+                        Profile
+                    </div>
+                    <div class = 'dropdown-menu-option'>
+                        Settings
+                    </div>
+                    <div class = 'dropdown-menu-option'>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <!-- <a href="{% url 'logout' %}"> {{ user.first_name }} </a>  -->
+        {% else %} 
+            <div class = 'profile-container'>
+                <a href="{% url 'login' %}">LOGIN/SIGNUP </a>  
+            </div>
+        {% endif %}
+    </div>
+</div>
+<script>
+    function toggle_dropdown() {
+        document.getElementById("dropdown-menu").classList.toggle("dropdown-menu-show");
+    }
+</script>
+{% endblock body %}

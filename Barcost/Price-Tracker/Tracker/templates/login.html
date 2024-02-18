@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %} 
+    <link rel = 'stylesheet' href = "{% static 'css/signup.css' %}">
+    <link rel = 'stylesheet' href = "{%static 'css/header.css' %}">
+    <link rel = 'stylesheet' href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400&display=swap" rel="stylesheet">
+{% endblock head %}
+
+{% block title %} Barcost {% endblock title %}
+{% block body %}
+{% include 'header.html' %}
+<!-- <div class = 'header'>
+    <div class = 'title'>
+        <img src = "{% static 'images/logo.png' %}">
+        <span>BARCOST</span>
+    </div>
+    <div class = 'main'>
+        <ul class="hovers">
+           <li> <a href="{% url 'landing' %}"><i class="fa-solid fa-house-chimney"></i> HOME </a> </li> 
+        </ul>
+    </div>
+    <div class = 'status'>
+      <a  class="hovers"href="{% url 'signup' %}">LOGIN/SIGNUP </a>  
+    </div>
+</div> -->
+
+<section class='login-container-wrapper'>
+    <div class='login-container'>
+        <div class='login-image-container'>
+            <img src="{% static 'images/signo 1.png' %}" alt='login image'>
+        </div>
+
+        <form action="{% url 'login' %}" method="POST" class='login-form' required>
+            <h2>Login</h2>
+
+            {% if message %}
+                {% include 'alert.html' %}
+            {% endif %}
+
+            {% csrf_token %}
+            <div class='input-fields'>
+                <div class='input-field'>
+                    <input type='text' id='username' name='username' required class='input-box' autocomplete="off">
+                    <label for='username'>Username</label>
+                </div>
+                <div class='input-field'>
+                    <input type='password' id='password' name='password' required class='input-box' autocomplete="off">
+                    <label for='password'>Password</label>
+                </div>
+            </div>
+            <div class='button-container'>
+                <button type='submit' class='form-btn'>
+                    Login
+                    <div class="arrow-wrapper">
+                        <div class="arrow"></div>
+                    </div>
+                </button>
+                <span>
+                    <a class="hoversign" href="{% url 'signup' %}">
+                        New Member?
+                        <br>
+                        Signup
+                    </a>
+                </span>
+            </div>
+        </form>
+
+    </div>
+</section>
+
+    
+
+{% endblock  %}

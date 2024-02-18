@@ -1,0 +1,137 @@
+.dashboard-container {
+    display: grid;
+    place-items: center;
+}
+
+.empty-dashborad {
+    display: grid;
+    place-items: center;
+    padding: 2rem 1rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    font-family: 'Poppins';
+    font-size: 4vmin;
+    margin-top: 25vmin;
+}
+
+.empty-dashborad img {
+    width: 7vmin;
+}
+
+.add-product-link {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2rem;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.product-form {
+    display: flex;
+    justify-content: flex-end;
+    transition: all 2s;
+    position: absolute;
+    width: 95%;
+}
+
+.product-form input {
+    padding: 0.5rem 1rem;
+    font-size: 3vmin;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.add-product {
+    font-size: 3vmin;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    z-index: 3;
+    overflow: hidden;
+}
+
+.product-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 15rem));
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+    padding: 5rem 2rem;
+}
+
+.product-card {
+    border-radius: 1rem;
+    padding: 1rem;
+
+    background: #fff;
+    box-shadow: 5px 5px 20px 10px #161616;
+
+    display: grid;
+    align-content: space-between;
+
+    font-family: sans-serif;
+    font-size: 2vmin;
+}
+
+.product-image {
+    display: flex;
+    justify-content: center;
+}
+
+.product-image img {
+    display: block;
+    width: 100%;
+}
+
+.product-details-container {
+    display: grid;
+    gap: 0.5rem;
+    font-family: inherit;
+    font-size: 2.6vmin;
+}
+
+.product-name {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-rating-price-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1rem
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: space-around;
+}
+
+.button-container .btn {
+    padding: 0.5rem;
+    flex: auto;
+    font-family: 'Clash Display';
+    font-size: 2.5vmin;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    border-radius: 0.5rem;
+    background: transparent;
+}
+
+.heading-1 {
+    font-size: 3.5vmin;
+    color: #ffffff;
+}
+
+.heading-2 {
+    font-size: 3vmin;
+    color: #b7b7b7;
+}

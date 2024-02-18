@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %} 
+    <link rel = 'stylesheet' href = "{% static 'css/landing.css' %}">
+    <link href="https://api.fontshare.com/v2/css?f[]=author@500&display=swap" rel="stylesheet">
+{% endblock head %}
+    
+{% block title %} Barcost {% endblock title %}
+{% block body %}
+    {% include 'header.html' %}
+    <div class = 'hero1'>
+        <h1>
+            Bring the product link,
+            <br/>
+            We'll do the rest
+        </h1>
+        <br/>
+        <h2>
+            <br/>
+            With Barcost you can track the price journey of any product that you add. 
+        </h2>
+        <a href = 'login'>
+            <button class = 'btn'>GET STARTED</button>
+        </a>
+    </div>
+    <img src="{% static 'images/phone1.png' %}" class = 'phone p1' alt="image of a phone">
+    <img src="{% static 'images/phone2.png' %}" class = 'phone p2' alt="image of another phone">
+    
+    <a href = '#features'>
+        <div class = 'scroll-wheel'>
+            <div class = 'down-arrow'>
+                &#65088
+            </div>
+        </div>
+    </a>
+    <div class = 'hero2'>
+        <div class = 'hero2_title' id = 'features'>
+            <span class = 'hidden'>WHY CHOOSE US</span>
+            <span class = 'hidden'></span>
+        </div>
+        <div class = 'hero2_content'>
+            <div class = 'left'>
+                {% include 'feature_card.html' with title='Availability' desc='Our Servers run 24/7 to keep track of the product price.' image='clock' only %}
+
+                {% include 'feature_card.html' with title='Price Drop Alerts' desc='BARCOST sends you email notification once the price of the product starts dropping.' image='clock' only %}
+                
+            </div>
+            <div class = 'center hidden'>
+                
+            </div>
+            <div class = 'right'>
+                {% include 'feature_card.html' with title='Multiple Stores Supported' desc='Amazon, Flipkart, Snapdeal. You name it and many more being added' image='clock' only %}
+
+                {% include 'feature_card.html' with title='Multi-Currency' desc='We support multiple currencies such as INR, USD, YEN, etc. and also supports currency conversion.' image='clock' only %}
+                
+                </div>
+            </div>    
+        </div>
+    </div>
+    
+    <script src = "{% static 'js/landing.js' %}"></script>
+{% endblock body %}

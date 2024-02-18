@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <!-- <meta http-equiv="refresh" content="10" /> -->
+    <link rel = 'stylesheet' href = "{% static 'css/dashboard.css' %}">
+{% endblock head %}
+
+{% block title %} Dashboard {% endblock title %}
+{% block body %}
+    {% include 'header.html' %}
+    <div class = 'dashboard-container'>
+        {% if message %}
+                {% include 'alert.html' %}
+        {% endif %}
+        {% if not cart_items %}
+            <div class = 'empty-dashborad'>
+                <span class = 'heading-1'>You have nothing bookmarked yet.</span>
+                <span class = 'heading-2'>Add a product URL to get started</span>
+                <br/>
+                <br/>
+                <img src = "{% static 'images/add_icon.png' %}">
+                <form method = 'POST' action ="">
+                    {% csrf_token %}
+                    <input type = 'url' name = 'product_url' placeholder="URL">
+                    <button type = 'submit' name = 'search'>Submit</button>
+                </form>
+            </div>
+        {% else %}
+            <div class = 'add-product-link'>
+                <form method = 'POST' action ="" class = 'product-form'>
+                    {% csrf_token %}
+                    <input type = 'url' name = 'product_url' placeholder="URL">
+                    <button type = 'submit' name = 'search' class = 'add-product'>Submit</button>
+                </form>
+            </div>
+            <div class = 'product-card-container'>
+                {% for item in cart_items %}
+                    <div class = 'product-card'>
+                        <div class = 'product-image'>
+                            <img src = "{{ item.product.image_url }}">
+                        </div>
+                        <div class = 'product-details-container'>
+                            <div class = 'product-name'>
+                                {{ item.product.name }}
+                            </div>
+                            <div class = 'product-rating-price-flex'>
+                                <div class = 'product-rating'>
+                                    {{ item.product.rating }}
+                                </div>
+                                <div class = 'product-price'>
+                                    {{ item.price }}
+                                </div>
+                            </div>
+                            <div class = 'button-container'>
+                                <a href="{% url 'product' item.product.id %}">
+                                    <button class = 'btn'>
+                                        Track Price
+                                    </button>
+                                </a>
+                                <a href="{{ item.product.url }}">
+                                    <button class = 'btn'>
+                                        View on 
+                                        {% if item.product.domain == 'Amazon' %}
+                                            <img src = "{% static 'images/amazon.png' %}" width="50%">
+                                        {% endif %}
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock body%}
